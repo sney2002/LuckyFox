@@ -1,5 +1,5 @@
 from request import Request
-from handlers import HTTPRequest, FileRequest
+from handlers import HTTPRequest, FileRequest, DataURLRequest
 from url import URL
 import sys
 
@@ -27,6 +27,7 @@ if __name__ == '__main__':
     Request.register_handler('http', HTTPRequest(headers=headers))
     Request.register_handler('https', HTTPRequest(headers=headers))
     Request.register_handler('file', FileRequest())
+    Request.register_handler('data', DataURLRequest())
 
     http = HTTPRequest(headers=headers)
     url = URL(url_string)

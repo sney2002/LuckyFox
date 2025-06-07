@@ -16,6 +16,11 @@ class URL:
     path: str = ''
 
     def __init__(self, url: str):
+        if url.startswith('data:'):
+            self.scheme = 'data'
+            self.path = url[5:]
+            return
+
         self.scheme, url = url.split('://', 1)
         self.port = scheme_default_ports.get(self.scheme, 0)
 
